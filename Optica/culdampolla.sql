@@ -32,7 +32,7 @@ CREATE TABLE `address` (
   `cp` varchar(45) DEFAULT NULL,
   `pais` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,8 @@ LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
 INSERT INTO `address` VALUES (1,'Bocamoll','25','2','3','Barcallona','08025','Espanyistan');
 INSERT INTO `address` VALUES (2,'Coquelicot','52','7','4','Vignobles du Rivesaltes','1154565','Guayomini');
+INSERT INTO `address` VALUES (3,'Kaiserman','12','2','2','Totloose','654544','Prusia');
+INSERT INTO `address` VALUES (4,'Buendia','4','8','1','Macondo','222555','Molombia');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,7 +73,7 @@ CREATE TABLE `client` (
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
 INSERT INTO `client` VALUES (1,'Aretha','0188978944','rescue@me.hold','2021-01-12 17:50:46',NULL);
-INSERT INTO `client` VALUES (2,'Etta','01645567','rather@be.blind','2021-01-12 17:51:49',NULL);
+INSERT INTO `client` VALUES (2,'Etta','01645567','rather@be.blind','2021-01-12 17:51:49',1);
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +93,7 @@ CREATE TABLE `client_address` (
   KEY `fk_client_address_address1_idx` (`address_address_id`),
   CONSTRAINT `fk_client_address_address1` FOREIGN KEY (`address_address_id`) REFERENCES `address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_client_address_client1` FOREIGN KEY (`client_client_id`) REFERENCES `client` (`client_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +102,8 @@ CREATE TABLE `client_address` (
 
 LOCK TABLES `client_address` WRITE;
 /*!40000 ALTER TABLE `client_address` DISABLE KEYS */;
-INSERT INTO `client_address` VALUES (1,1,1);
+INSERT INTO `client_address` VALUES (1,1,3);
+INSERT INTO `client_address` VALUES (2,2,4);
 /*!40000 ALTER TABLE `client_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +158,7 @@ CREATE TABLE `proveidor` (
 LOCK TABLES `proveidor` WRITE;
 /*!40000 ALTER TABLE `proveidor` DISABLE KEYS */;
 INSERT INTO `proveidor` VALUES (1,'Gluglu Aquaman','4564564',45646,'5464864aa');
-INSERT INTO `proveidor` VALUES (2,'Rom`petechos S. L.','4564777444',7897945,'54648aa');
+INSERT INTO `proveidor` VALUES (2,'Rompetechos S. L.','4564777444',7897945,'54648aa');
 /*!40000 ALTER TABLE `proveidor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +188,7 @@ CREATE TABLE `proveidor_address` (
 LOCK TABLES `proveidor_address` WRITE;
 /*!40000 ALTER TABLE `proveidor_address` DISABLE KEYS */;
 INSERT INTO `proveidor_address` VALUES (1,1,1);
-INSERT INTO `proveidor_address` VALUES (2,1,2);
+INSERT INTO `proveidor_address` VALUES (2,2,2);
 /*!40000 ALTER TABLE `proveidor_address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +215,7 @@ CREATE TABLE `ulleres` (
   KEY `client_idx` (`client_id`),
   CONSTRAINT `client` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`) ON DELETE RESTRICT,
   CONSTRAINT `marca` FOREIGN KEY (`marca`) REFERENCES `marca` (`nom`) ON DELETE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='			';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='			';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,7 +224,8 @@ CREATE TABLE `ulleres` (
 
 LOCK TABLES `ulleres` WRITE;
 /*!40000 ALTER TABLE `ulleres` DISABLE KEYS */;
-INSERT INTO `ulleres` VALUES (1,'Gucci Luz',2.3,3.2,'flotant','groc','verd',23,'dasfsd',1);
+INSERT INTO `ulleres` VALUES (1,'Gucci Luz',2.3,3.2,'flotant','groc','verd',200,'Julia',1);
+INSERT INTO `ulleres` VALUES (2,'HugoSosBos',4.5,5.1,'pasta','blau','negre',450,'Robert',2);
 /*!40000 ALTER TABLE `ulleres` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -234,4 +238,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-13 10:21:34
+-- Dump completed on 2021-01-20 16:46:03
